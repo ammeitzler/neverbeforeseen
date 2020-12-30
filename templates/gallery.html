@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Never Before Seen in Person</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			html {
+				margin: 0 auto;
+				padding: 0;
+				overflow-x: hidden;
+
+			}
+			#main_content {
+				width: 100%;
+				text-align: center;
+				margin: 0;
+			}
+			header {
+				width: 100%;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 2.5vw;
+			}
+			header span {
+				font-family: "arial";
+			}
+			header h3 {
+				color: #d6bc2e;
+			    position: relative;
+			    text-align: center;
+			    display: inline-block;
+			    margin-top: 50px;
+			}
+			button.button {
+				width: 80px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.video_container {
+				display: block;
+				padding: 30px
+			}
+			.video_container p {
+				text-align: left;
+			}
+			#video_content {
+				height: 100%;
+				margin-top: 40px;
+				margin-bottom: 150px;
+			}
+			.video_info {
+				display: inline-block;
+			    top: 0;
+			    vertical-align: top;
+			    margin-left: 50px;
+			    font-family: Helvetica,Arial,sans-serif;
+			    width: 20%;
+			}
+			.video_info button {
+				width: 100%;
+			    padding: 10px 20px;
+			    font-weight: 700;
+			    line-height: 1.3;
+			    font-family: Helvetica,Arial,sans-serif;
+			    letter-spacing: .05rem;
+			    cursor: pointer;
+			    transition-duration: .2s;
+			    transition-property: color,background-color,border-color;
+			    min-height: 45px;
+			    border: 1px solid #222;
+			    font-size: 1.5rem;
+			    color: #fff;
+			    background-color: #222;
+			    -webkit-font-smoothing: antialiased;
+			}
+			.video_info .details {
+				border-top: 1px solid #ddd;
+			}
+			.video_info .details p:first-child {
+				font-size: 1.2vw;
+				color: #000;
+			}
+			.video_info .details p {
+				margin-bottom: 10px;
+			    font: 1.2rem/1.3 Helvetica,Arial,sans-serif;
+			    letter-spacing: .05rem;
+			    color: #767676;
+			    font-size: 1vw;
+			    margin-bottom: 20px;
+			}
+			.images {
+				display: inline-block;
+				vertical-align: top;
+				width: 100px;
+				cursor: pointer;
+			}
+			.images img {
+				width: 100px;
+				height: 124px;
+			}
+			#main_image, #main_image2 {
+				width: 600px;
+				height: 380px;
+				display: inline-block;
+			}
+			#main_image img, #main_image2 img {
+				max-width: 600px;
+				max-height: 380px;
+				cursor: pointer;
+			}
+			#video_iframe {
+				height: 100%;
+				width: 100%;
+				background: white;
+				opacity: 0.8;
+				z-index: 9;
+			}
+			#about_content {
+				width: 50%;
+				margin-bottom: 100px;
+				margin: 0 auto;
+				text-align: left;
+				font: 1.2rem/1.3 Helvetica,Arial,sans-serif;
+			}
+			#terms_statement, #terms_statement2 {
+				display: none;
+			}
+			#terms_conditions, #terms_conditions2 {
+				cursor: pointer;
+				text-decoration: underline;
+			}
+
+			@media only screen and (max-width: 800px) {
+			  #main_image, #main_image2 {
+			    width: 100%;
+			  }
+			  .video_info {
+			  	width: 100%;
+			  	height: 250px;
+			  	margin: 0;
+			  }
+			  .images {
+			  	display: inline;
+			  }
+			  .video_info .details p:first-child, .video_info .details p {
+			  	font-size: 2vw;
+			  }
+			  header h3 {
+			      font-size: 6vw;
+			  }
+			}
+
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+
+	<body id="main_content">
+	  <header>
+	    <h3><span class="never_before"><b>NEVER BEFORE SEEN</b></span><br> <i>in person</i></h3>
+	  </header>
+		<div id="video_content">
+				<div class="video_container">
+			  	  	<div class="images">
+			  			<img onclick="change_main(this)" src="../images/stored_painting1.jpg" alt="image"/> 
+			  			<img onclick="change_main(this)" src="../images/stored_painting12.jpg" alt="image"/>
+			  			<img id="iframe_thumb" onclick="change_main(this)" src="../images/stored_painting1_video.png" alt="iframe_thumb"/> 
+			  		</div>
+			        <div id="main_image">
+			        	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/9fX7xzRNnVA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			       	</div> 
+			        <div class="video_info">
+			        	<p class="title">Jogger</p>
+			        	<div class="details">
+			        		<p>Details</p>
+			        		<p class="price">oil on paper<br> 5ftx4ft<br> made in 2020<br><br>by Angeline Marie Michael Meitzler</p>
+			        		<p id="terms_conditions" onclick="terms()">Terms and Conditions</p>
+			        		<p id="terms_statement">
+			        			Never Before Seen In Person is a series of paintings created and seen only by the artist.<br><br>
+								Upon the purchase of an artwork, the new owner will receive a receipt of transaction. The artwork will remain in its sealed canister inside of the artist’s storage facility for the entirety of its life. When the sealed canister is exhibited publicly, the purchaser’s name will be listed alongside the work.<br><br>
+								At any time, the new owner can resell the work. The terms and conditions are transferable upon resale.
+							</p>
+						</div>
+						<div class="details">
+							<p></p>
+							<p>
+								purchaser: Soliana Habte
+							</p>
+						</div>
+			        	<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="FEXQK84GGAESW">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form> -->
+			        </div>
+			  </div>
+			  <div class="video_container">
+			  	  	<div class="images">
+			  			<img onclick="change_main2(this)" src="../images/stored_painting2.jpg" alt="image"/> 
+			  			<img onclick="change_main2(this)" src="../images/stored_painting22.jpg" alt="image"/>
+			  			<img id="iframe_thumb" onclick="change_main2(this)" src="../images/stored_painting2_video.png" alt="iframe_thumb"/> 
+			  		</div>
+			        <div id="main_image2">
+			        	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Mqphsw7M1-Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			       	</div> 
+			        <div class="video_info">
+			        	<p class="title">Roundtable</p>
+			        	<div class="details">
+			        		<p>Details</p>
+			        		<p class="price">oil on paper<br> 5ftx4ft<br> made in 2020<br><br>by Angeline Marie Michael Meitzler</p>
+			        		<p id="terms_conditions2" onclick="terms2()">Terms and Conditions</p>
+			        		<p id="terms_statement2">
+			        			Never Before Seen In Person is a series of paintings created and seen only by the artist.<br><br>
+								Upon the purchase of an artwork, the new owner will receive a receipt of transaction. The artwork will remain in its sealed canister inside of the artist’s storage facility for the entirety of its life. When the sealed canister is exhibited publicly, the purchaser’s name will be listed alongside the work.<br><br>
+								At any time, the new owner can resell the work. The terms and conditions are transferable upon resale.
+							</p>
+			        	</div>
+			        	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="FEXQK84GGAESW">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+			        </div>
+			  </div>
+		 </div>
+
+
+	 <script>
+  	
+	function terms() {
+		$("#terms_statement").slideToggle()
+	}
+	function terms2() {
+		$("#terms_statement2").slideToggle()
+	}
+
+  	function change_main(el) {
+  		if (el.alt == "iframe_thumb") {
+  			var $new = $('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/9fX7xzRNnVA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+  		} else {
+  			var $new = $("<img>", {"src": el.src});
+  		}
+  		$('#main_image').children().remove();
+        $( "#main_image" ).append( $new );
+  	}
+
+  	  	function change_main2(el) {
+  		if (el.alt == "iframe_thumb") {
+  			var $new = $('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Mqphsw7M1-Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+  		} else {
+  			var $new = $("<img>", {"src": el.src});
+  		}
+  		$('#main_image2').children().remove();
+        $( "#main_image2" ).append( $new );
+  	}
+
+	 </script>
+
+
+	</body>
+</html>

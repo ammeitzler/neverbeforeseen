@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Never Before Seen in Person</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				padding: 10px;
+				width: 100%;
+				text-align: center;
+			}
+
+			#corner {
+				position: absolute;
+				padding: 10px;
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				text-align: right;
+				display: none;
+			}
+			.dg.ac {
+				display: none;
+			}
+
+
+			a {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+
+			#stats { display: none; }
+			#stats #fps { background: transparent !important }
+			#stats #fps #fpsText { color: #aaa !important }
+			#stats #fps #fpsGraph { display: true }
+
+
+			html {
+				margin: 0 auto;
+				padding: 0;
+			}
+			#main_content {
+				width: 100%;
+				text-align: center;
+			}
+			header {
+				width: 100%;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 2.5vw;
+			}
+			header span {
+				font-family: "arial";
+			}
+			header h1 {
+				color: #d6bc2e;;
+			    position: absolute;
+			    margin: 0 auto;
+			    text-align: center;
+			    display: inline-block;
+			    top: 30%;
+			    right: 23.5%;
+			}
+			header a {
+				color: #d6bc2e;
+				text-decoration: none;
+			}
+			button.button {
+				width: 80px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.video_container {
+				display: inline-block;
+				padding: 10px
+			}
+			.video_container p {
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body id="main_content">
+  <header>
+    <h1><a href="templates/gallery.html"><span class="never_before"><b>NEVER BEFORE SEEN</b></span><br> <i>in person</i></a></h1>
+  </header>
+
+
+<!-- 
+  <div class="video_container">
+        <iframe width="540" height="305" src="https://www.youtube.com/embed/9fX7xzRNnVA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p class="title"><a href="detail/video1.html">title</a></p>
+        <p class="price">price</p>
+  </div>
+
+  <div class="video_container">
+        <iframe width="540" height="305" src="https://www.youtube.com/embed/9fX7xzRNnVA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p class="title"><a href="detail/video1.html">title</a></p>
+        <p class="price">price</p>
+  </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script src="js/three.min.js"></script>
+
+		<script src="js/Detector.js"></script>
+		<script src="js/TrackballControls.js"></script>
+
+		<script src="js/stats.min.js"></script>
+		<script src="js/dat.gui.min.js"></script>
+
+
+		<script src="clothphysics.js"></script>
+
+		<script type="x-shader/x-fragment" id="fragmentShaderDepth">
+
+			uniform sampler2D texture;
+			varying vec2 vUV;
+
+			vec4 pack_depth( const in float depth ) {
+
+				const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );
+				const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );
+				vec4 res = fract( depth * bit_shift );
+				res -= res.xxyz * bit_mask;
+				return res;
+
+			}
+
+			void main() {
+
+				vec4 pixel = texture2D( texture, vUV );
+
+				if ( pixel.a < 0.5 ) discard;
+
+				gl_FragData[ 0 ] = pack_depth( gl_FragCoord.z );
+
+			}
+		</script>
+
+		<script type="x-shader/x-vertex" id="vertexShaderDepth">
+
+			varying vec2 vUV;
+
+			void main() {
+
+				vUV = 0.75 * uv;
+
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+				gl_Position = projectionMatrix * mvPosition;
+
+			}
+
+		</script>
+
+		<script src = "drape.js"></script>
+	</body>
+</html>
